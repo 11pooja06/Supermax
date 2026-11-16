@@ -7,7 +7,6 @@ const navItems = [
   { name: "Home", path: "/" },
   { name: "Products", path: "/products" },
   { name: "About Us", path: "/about" },
-  { name: "Our Story", path: "/our-story" },
   { name: "Why Choose Us", path: "/why-choose-us" },
   { name: "Contact Us", path: "/contact" },
 ];
@@ -25,6 +24,7 @@ function Navbar() {
   return (
     <header className="relative z-50 w-full bg-white shadow-md">
       <nav className="mx-auto flex max-w-7xl items-center justify-between gap-5 px-5 py-3 lg:px-8">
+
         {/* LOGO */}
         <NavLink
           to="/"
@@ -49,6 +49,7 @@ function Navbar() {
               {({ isActive }) => (
                 <>
                   {item.name}
+
                   {isActive && (
                     <span className="absolute bottom-0 left-0 h-1 w-full rounded-full bg-[#e50914]" />
                   )}

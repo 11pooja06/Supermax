@@ -14,12 +14,23 @@
 
 html {
   scroll-behavior: smooth;
+  height: auto;
+  overflow-y: auto;
 }
 
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  height: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+#root {
+  min-height: 100vh;
+  height: auto;
+  overflow: visible;
 }
 
 * {
@@ -124,6 +135,7 @@ a {
   line-height: 1.4;
 
   cursor: pointer;
+
   transition:
     background-color 0.3s ease,
     transform 0.3s ease,
@@ -147,7 +159,6 @@ a {
 .super-input {
   display: block;
   width: 100%;
-
   padding: 13px 15px;
 
   background-color: #ffffff;
@@ -157,7 +168,6 @@ a {
   border-radius: 8px;
 
   outline: none;
-
   font-size: 15px;
 
   transition:
@@ -180,18 +190,52 @@ img {
   max-width: 100%;
 }
 
+/* Product images: preserve natural aspect ratio */
+
 .product-image {
+  display: block;
   width: 100%;
-  height: 220px;
+  height: auto;
+  max-height: none;
   object-fit: contain;
+  object-position: center;
   transition: transform 0.3s ease;
 }
 
+/* Product card image area */
+
+.product-image-container {
+  width: 100%;
+  height: auto;
+  background-color: #eaf5ff;
+}
+
+/* No zoom effect that clips image edges */
+
 .product-image:hover {
-  transform: scale(1.05);
+  transform: none;
+}
+
+/* ================= PRODUCT GRID ================= */
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  align-items: stretch;
+}
+
+.products-grid > * {
+  min-width: 0;
 }
 
 /* ================= RESPONSIVE DESIGN ================= */
+
+@media (max-width: 1024px) {
+  .products-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
 
 @media (max-width: 640px) {
   .super-btn {
@@ -199,8 +243,9 @@ img {
     font-size: 14px;
   }
 
-  .product-image {
-    height: 190px;
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 
   .bubble {
