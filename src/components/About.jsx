@@ -6,7 +6,6 @@ import {
   Headphones,
   Sparkles,
   UserRound,
-  Users,
   HeartHandshake,
   TrendingUp,
   MapPin,
@@ -229,6 +228,7 @@ function About() {
 
       {/* ======================================
           WOMEN'S EMPOWERMENT
+          ONLY NEARLY 100 WOMEN CARD
       ====================================== */}
 
       <section className="bg-[#eaf5ff] px-5 py-16">
@@ -257,27 +257,12 @@ function About() {
             </p>
           </div>
 
-          {/* IMPACT CARDS */}
-          <div className="grid gap-7 md:grid-cols-2">
+          {/* SINGLE CENTERED IMPACT CARD */}
+          <div className="mx-auto max-w-xl">
+            <div className="rounded-xl bg-white p-8 text-center shadow-md transition duration-300 hover:-translate-y-1 hover:shadow-xl">
 
-            <div className="rounded-xl bg-white p-8 text-center shadow-md">
-              <Users
-                size={36}
-                className="mx-auto text-[#e50914]"
-              />
-
-              <h3 className="mt-4 text-4xl font-black text-[#071b43]">
-                8
-              </h3>
-
-              <p className="mt-3 font-semibold text-gray-600">
-                Women in Our Initial Workforce
-              </p>
-            </div>
-
-            <div className="rounded-xl bg-white p-8 text-center shadow-md">
               <HeartHandshake
-                size={36}
+                size={40}
                 className="mx-auto text-[#e50914]"
               />
 
@@ -285,9 +270,10 @@ function About() {
                 Nearly 100
               </h3>
 
-              <p className="mt-3 font-semibold text-gray-600">
+              <p className="mt-3 font-semibold leading-7 text-gray-600">
                 Women Connected to Our Wider Employment Ecosystem
               </p>
+
             </div>
           </div>
 
@@ -299,7 +285,6 @@ function About() {
             </h3>
 
             <p className="mt-5 leading-8 text-gray-700">
-              We began with eight women in our workforce.
               Understanding the practical challenges faced by
               working mothers, we designed our factory with fans
               and a dedicated space where employees could keep
@@ -326,6 +311,7 @@ function About() {
               independence, confidence and choice.
             </p>
           </div>
+
         </div>
       </section>
 

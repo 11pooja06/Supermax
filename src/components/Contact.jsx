@@ -6,7 +6,6 @@ import {
   MapPin,
   Phone,
   Mail,
-  Clock,
   Send,
 } from "lucide-react";
 
@@ -15,31 +14,41 @@ import BubbleBackground from "./BubbleBackground";
 // Replace this with your Web3Forms access key
 const WEB3FORMS_KEY = "YOUR_WEB3FORMS_ACCESS_KEY";
 
-// Contact details - replace with actual business information
+// ==========================================
+// CONTACT DETAILS
+// ==========================================
+
 const contactDetails = [
   {
     icon: MapPin,
     title: "Our Address",
-    value: "Your Business Address, City, State, PIN Code",
+    value:
+      "Rathaaliya Industry, Ram Nagar Scheme, Plot No. 15, Banyawala, Charanwala, Sanganer, Jaipur, Rajasthan - 303904",
   },
   {
     icon: Phone,
-    title: "Call Us",
-    value: "+91 XXXXXXXXXX",
+    title: "Call / WhatsApp Us",
+    value: "+91 8440840098",
+    link: "https://wa.me/918440840098",
   },
   {
     icon: Mail,
-    title: "Email Us",
-    value: "yourbusiness@gmail.com",
+    title: "Email - Kirti Sharma",
+    value: "kirti.sharma@supermax.co.in",
+    link: "mailto:kirti.sharma@supermax.co.in",
   },
   {
-    icon: Clock,
-    title: "Business Hours",
-    value: "Monday - Saturday: Add your opening hours",
+    icon: Mail,
+    title: "Email - Amit Rathaaliya",
+    value: "amit.rathaaliya@supermax.co.in",
+    link: "mailto:amit.rathaaliya@supermax.co.in",
   },
 ];
 
-// Initial form data
+// ==========================================
+// INITIAL FORM DATA
+// ==========================================
+
 const initialForm = {
   name: "",
   email: "",
@@ -47,6 +56,10 @@ const initialForm = {
   subject: "",
   message: "",
 };
+
+// ==========================================
+// CONTACT PAGE
+// ==========================================
 
 function Contact() {
   const location = useLocation();
@@ -85,7 +98,10 @@ function Contact() {
     }));
   }
 
-  // Submit form to Web3Forms
+  // ==========================================
+  // SUBMIT FORM TO WEB3FORMS
+  // ==========================================
+
   async function handleSubmit(event) {
     event.preventDefault();
 
@@ -130,7 +146,8 @@ function Contact() {
       setForm({ ...initialForm });
     } catch (error) {
       setStatus(
-        error.message || "Something went wrong. Please try again."
+        error.message ||
+          "Something went wrong. Please try again."
       );
     } finally {
       setLoading(false);
@@ -140,7 +157,10 @@ function Contact() {
   return (
     <main>
 
-      {/* ============ BLUE BUBBLE BANNER ============ */}
+      {/* ======================================
+          BLUE BUBBLE BANNER
+      ====================================== */}
+
       <section className="bubble-section px-5 py-16 text-center text-white">
 
         <BubbleBackground />
@@ -163,12 +183,18 @@ function Contact() {
         </div>
       </section>
 
-      {/* ============ CONTACT SECTION ============ */}
+      {/* ======================================
+          CONTACT SECTION
+      ====================================== */}
+
       <section className="bg-white px-5 py-16">
 
         <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2">
 
-          {/* LEFT SIDE - CONTACT INFORMATION */}
+          {/* ======================================
+              LEFT SIDE - CONTACT INFORMATION
+          ====================================== */}
+
           <div>
 
             <p className="mb-3 text-sm font-bold uppercase tracking-widest text-[#e50914]">
@@ -187,6 +213,7 @@ function Contact() {
             </p>
 
             {/* CONTACT DETAILS */}
+
             <div className="mt-9 space-y-8">
 
               {contactDetails.map((detail) => {
@@ -199,19 +226,42 @@ function Contact() {
                   >
 
                     {/* RED ICON BOX */}
+
                     <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#e50914] text-white">
                       <Icon size={23} />
                     </div>
 
                     {/* CONTACT TEXT */}
-                    <div>
+
+                    <div className="min-w-0">
+
                       <h3 className="text-lg font-bold text-[#071b43]">
                         {detail.title}
                       </h3>
 
-                      <p className="mt-2 text-sm leading-7 text-gray-600">
-                        {detail.value}
-                      </p>
+                      {detail.link ? (
+                        <a
+                          href={detail.link}
+                          target={
+                            detail.link.startsWith("https")
+                              ? "_blank"
+                              : undefined
+                          }
+                          rel={
+                            detail.link.startsWith("https")
+                              ? "noopener noreferrer"
+                              : undefined
+                          }
+                          className="mt-2 block break-words text-sm leading-7 text-[#062b68] transition-colors hover:text-[#e50914] hover:underline"
+                        >
+                          {detail.value}
+                        </a>
+                      ) : (
+                        <p className="mt-2 text-sm leading-7 text-gray-600">
+                          {detail.value}
+                        </p>
+                      )}
+
                     </div>
 
                   </div>
@@ -222,7 +272,10 @@ function Contact() {
 
           </div>
 
-          {/* RIGHT SIDE - CONTACT FORM */}
+          {/* ======================================
+              RIGHT SIDE - CONTACT FORM
+          ====================================== */}
+
           <div className="rounded-xl bg-[#eaf5ff] p-6 shadow-lg sm:p-8">
 
             <h2 className="text-2xl font-black text-[#071b43]">
@@ -239,6 +292,7 @@ function Contact() {
             >
 
               {/* NAME */}
+
               <div>
                 <label
                   htmlFor="contact-name"
@@ -260,6 +314,7 @@ function Contact() {
               </div>
 
               {/* EMAIL */}
+
               <div>
                 <label
                   htmlFor="contact-email"
@@ -281,6 +336,7 @@ function Contact() {
               </div>
 
               {/* PHONE */}
+
               <div>
                 <label
                   htmlFor="contact-phone"
@@ -301,6 +357,7 @@ function Contact() {
               </div>
 
               {/* SUBJECT */}
+
               <div>
                 <label
                   htmlFor="contact-subject"
@@ -322,6 +379,7 @@ function Contact() {
               </div>
 
               {/* MESSAGE */}
+
               <div>
                 <label
                   htmlFor="contact-message"
@@ -343,6 +401,7 @@ function Contact() {
               </div>
 
               {/* FORM STATUS */}
+
               {status && (
                 <p
                   role="status"
@@ -357,6 +416,7 @@ function Contact() {
               )}
 
               {/* SEND BUTTON */}
+
               <button
                 type="submit"
                 disabled={loading}
